@@ -95,20 +95,21 @@ for uid in userids:
 
         try:
             profile = get_profile(uid, cookies="cookies.txt")
+            print(profile)
         except Exception as e:
             logging.warning(f"An error occurred while getting profile for user ID {uid}: {e}")
             profile = {}
 
-        try:
-            friends = list(get_friends(uid, cookies="cookies.txt"))
-        except Exception as e:
-            logging.warning(f"An error occurred while getting friends for user ID {uid}: {e}")
-            friends = []
+        # try:
+        #     friends = list(get_friends(uid, cookies="cookies.txt"))
+        # except Exception as e:
+        #     logging.warning(f"An error occurred while getting friends for user ID {uid}: {e}")
+        #     friends = []
 
-
-        metadata_file = os.path.join(profile_dir, "metadata.json")
-        extract_metadata(profile,friends, metadata_file)
-        download_images_from_json(profile, profile_dir)
+        #
+        # metadata_file = os.path.join(profile_dir, "metadata.json")
+        # extract_metadata(profile,friends, metadata_file)
+        # download_images_from_json(profile, profile_dir)
     except Exception as e:
         print(f"An error occurred while processing user ID {uid}: {e}")
 
